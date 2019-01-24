@@ -1,13 +1,13 @@
 // Requiring in the modules that are needed
-const electron = require('electron');
+const electron = require("electron");
 
-const { app, BrowserWindow } = electron;
+const { app, BrowserWindow, ipcMain } = electron;
 
 // Setting the mainwindow global variable to use
 let mainWindow;
 
 // Running the ready function for when the app is ready
-app.on('ready', () => {
+app.on("ready", () => {
   mainWindow = new BrowserWindow({
     height: 600,
     width: 800,
@@ -15,3 +15,5 @@ app.on('ready', () => {
   });
   mainWindow.loadURL(`file://${__dirname}/src/index.html`);
 });
+
+ipcMain.on("videos:added", (event, videos) => {});
